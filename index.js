@@ -2,11 +2,12 @@ const {TelegramClient, Api} = require("telegram") ;
 const {StringSession} = require("telegram/sessions") ;
 const input = require("input") ;
 const archivedUsers = require("./UserList");
+const config = require("./Config");
 const env = require("dotenv").config();
 
-const apiId = Number(process.env.ApiId) ;
-const apiHash = process.env.ApiHash ;
-const stringSession = new StringSession(process.env.Session) ;
+const apiId = config.apiId ;
+const apiHash = config.apiHash ;
+const stringSession = new StringSession(config.stringSession) ;
 
 (async () => {
     console.log('Loading interactive example...') ;
@@ -28,12 +29,12 @@ const stringSession = new StringSession(process.env.Session) ;
     setTimeout(async () => {
         await client.invoke(new Api.messages.GetHistory({
             peer: new Api.InputPeerUser({
-                userId: BigInt(process.env.UserId),
-                accessHash: BigInt(process.env.UserHash)
+                userId: config.userId,
+                accessHash: config.userHash
             })
         })).then(user => {
             if (user.messages === undefined || user.messages.length === 0) {
-                client.sendMessage(process.env.UserId, {
+                client.sendMessage(config.userId, {
                     message: "Why'd you clear my history?"
                 });
             }
@@ -43,6 +44,6 @@ const stringSession = new StringSession(process.env.Session) ;
         }).catch(err => {
             console.log(err);
         });
-    }, 20000);
+    }, config.checkTime);
 
 })() ;
