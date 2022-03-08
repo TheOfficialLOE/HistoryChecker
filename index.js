@@ -3,7 +3,6 @@ const {StringSession} = require("telegram/sessions") ;
 const input = require("input") ;
 const archivedUsers = require("./UserList");
 const config = require("./Config");
-const env = require("dotenv").config();
 
 const apiId = config.apiId ;
 const apiHash = config.apiHash ;
