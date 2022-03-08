@@ -4,7 +4,7 @@ Since Telegram added this feature to allow users to remove messages and history 
 
 **Usage**:
 <br/>
-Create `Config.js` in the root directory with the following schemal:
+Create `Config.js` in the root directory with the following schema:
 
 `{
 apiId,
