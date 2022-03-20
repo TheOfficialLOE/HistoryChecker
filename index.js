@@ -34,7 +34,7 @@ const stringSession = new StringSession(config.stringSession) ;
         })).then(user => {
             if (user.messages === undefined || user.messages.length === 0) {
                 client.sendMessage(config.userId, {
-                    message: "Why'd you clear my history?"
+                    message: config.messageText
                 });
             }
             else {
