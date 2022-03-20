@@ -12,7 +12,7 @@ apiHash,
 stringSession,
 userId,
 userHash,
-messageText.
+messageText,
 checkTime
 }`
 
